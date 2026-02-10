@@ -1,0 +1,8 @@
+export { default as Header } from './Header'
+export { default as Hero } from './Hero'
+export { default as FleetSection } from './FleetSection'
+export { default as BusCard } from './BusCard'
+export { default as WhyChooseUs } from './WhyChooseUs'
+export { default as Gallery } from './Gallery'
+export { default as ContactSection } from './ContactSection'
+export { default as Footer } from './Footer'

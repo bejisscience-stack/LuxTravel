@@ -1,0 +1,237 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #050505;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.logo {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoLink {
+  font-size: 1.25rem;
+  font-weight: 200;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #F0F2F5;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoAccent {
+  font-weight: 600;
+}
+
+.adminBadge {
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #B8182F;
+  color: #F0F2F5;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.nav {
+  flex: 1;
+  padding: 24px 0;
+  overflow-y: auto;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: #A0A0A0;
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: #F0F2F5;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navLink.active {
+  color: #F0F2F5;
+  background: rgba(184, 24, 47, 0.1);
+}
+
+.navIcon {
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:hover .navIcon,
+.navLink.active .navIcon {
+  opacity: 1;
+}
+
+.navLabel {
+  flex: 1;
+}
+
+.activeIndicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 24px;
+  background: #B8182F;
+  border-radius: 0 2px 2px 0;
+}
+
+.footer {
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: #A0A0A0;
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.logoutButton:hover {
+  color: #B8182F;
+  background: rgba(184, 24, 47, 0.1);
+}
+
+/* Mobile Toggle Button */
+.mobileToggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 101;
+  width: 44px;
+  height: 44px;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #F0F2F5;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.mobileToggle:hover {
+  border-color: #B8182F;
+}
+
+/* Mobile Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: flex;
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .sidebar {
+    width: 280px;
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+
+  .logo {
+    padding: 20px 16px;
+    padding-left: 70px;
+  }
+
+  .navLink {
+    padding: 16px 20px;
+  }
+
+  .logoutButton {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .logoLink {
+    font-size: 1.1rem;
+  }
+
+  .adminBadge {
+    font-size: 0.5625rem;
+    padding: 3px 6px;
+  }
+}

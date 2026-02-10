@@ -1,0 +1,285 @@
+/* Gallery Section - matches Fleet design system */
+.section {
+  padding: 120px 40px;
+  background: #000000;
+}
+
+/* Section Header - same as Fleet */
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.tag {
+  font-family: var(--font-montserrat);
+  color: #B8182F;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #F0F2F5;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  margin: 0;
+}
+
+.divider {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: #F0F2F5;
+  margin: 30px auto 0;
+  transform: skewX(-20deg);
+}
+
+/* 4-column Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Image Wrapper */
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  background: #050505;
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: scale(1);
+}
+
+.imageHovered {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.overlayHovered {
+  opacity: 1;
+}
+
+.zoomIcon {
+  color: #F0F2F5;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.imageWrapper:hover .zoomIcon {
+  transform: scale(1);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightboxContent {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  max-width: 1400px;
+}
+
+.lightboxImage {
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #F0F2F5;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F0F2F5;
+  cursor: pointer;
+  padding: 16px;
+  z-index: 10;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.navButton:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.prevButton {
+  left: 24px;
+}
+
+.nextButton {
+  right: 24px;
+}
+
+.counter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-montserrat);
+  color: #A0A0A0;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Responsive - Small Tablet */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 24px;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .divider {
+    height: 50px;
+    margin-top: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navButton {
+    padding: 12px;
+  }
+
+  .prevButton {
+    left: 16px;
+  }
+
+  .nextButton {
+    right: 16px;
+  }
+
+  .closeButton {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 600px) {
+  .section {
+    padding: 60px 16px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .divider {
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lightboxContent {
+    width: 100vw;
+    height: 70vh;
+  }
+
+  .navButton {
+    padding: 10px;
+  }
+
+  .navButton svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .counter {
+    font-size: 0.75rem;
+  }
+}

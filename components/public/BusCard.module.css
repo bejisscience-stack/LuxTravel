@@ -1,0 +1,143 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card {
+  background: #050505;
+  padding: 60px 40px;
+  position: relative;
+  transition: background 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  cursor: pointer;
+}
+
+.card.hovered {
+  background: #0f0f0f;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+}
+
+.name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  color: #F0F2F5;
+}
+
+.class {
+  font-family: var(--font-montserrat);
+  color: #A0A0A0;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+}
+
+.image {
+  object-fit: cover;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+  transform: scale(0.8);
+}
+
+.imageHovered {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(0.9);
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-montserrat);
+  font-size: 0.7rem;
+  color: #A0A0A0;
+  letter-spacing: 0.1em;
+}
+
+.capacity {
+  text-transform: uppercase;
+}
+
+.viewDetails {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.card.hovered .viewDetails {
+  color: #F0F2F5;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.card.hovered .arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .card {
+    height: 450px;
+    padding: 40px 30px;
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 400px;
+    padding: 30px 24px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .footer {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 350px;
+    padding: 24px 20px;
+  }
+
+  .name {
+    font-size: 0.9rem;
+  }
+}

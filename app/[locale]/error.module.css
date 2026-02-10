@@ -1,0 +1,191 @@
+/* Error Page Styles */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-void);
+  padding: 2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 500px;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Icon */
+.iconContainer {
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(184, 24, 47, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-lip-red);
+  margin-bottom: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Text Content */
+.textContent {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-geo);
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-diamond);
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--color-silver);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.errorCode {
+  font-family: var(--font-geo);
+  font-size: 0.75rem;
+  color: var(--color-silver);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-family: var(--font-geo);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.primaryButton {
+  background-color: var(--color-lip-red);
+  color: var(--color-diamond);
+}
+
+.primaryButton:hover {
+  background-color: #d41e3a;
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--color-diamond);
+  border: 1px solid rgba(240, 242, 245, 0.3);
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-diamond);
+  background-color: rgba(240, 242, 245, 0.05);
+}
+
+/* Divider */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-silver), transparent);
+  margin-bottom: 1.5rem;
+}
+
+/* Support Text */
+.supportText {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  color: var(--color-silver);
+  font-style: italic;
+}
+
+.supportLink {
+  color: var(--color-lip-red);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.supportLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(184, 24, 47, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(184, 24, 47, 0.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .iconContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .iconContainer svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

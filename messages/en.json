@@ -1,0 +1,105 @@
+{
+  "nav": {
+    "home": "Home",
+    "buses": "Buses",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "The Art of Arrival",
+    "subtitle": "Executive ground travel, redefined.",
+    "cta": "Contact Us"
+  },
+  "showcase": {
+    "tag": "ONBOARD EXPERIENCE",
+    "title": "Sanctuary in Motion.",
+    "description": "Experience comfort and luxury like never before. Our buses are equipped with modern amenities, ensuring your journey is as enjoyable as your destination."
+  },
+  "features": {
+    "wifi": "WiFi Connectivity",
+    "ac": "Air Conditioning",
+    "usb": "USB Charging Ports",
+    "seats": "Comfortable Seating",
+    "toilet": "Onboard Toilet",
+    "entertainment": "Entertainment System",
+    "refreshments": "Refreshments Available",
+    "tv": "HD Television"
+  },
+  "fleet": {
+    "tag": "THE COLLECTION",
+    "title": "Our Fleet",
+    "viewDetails": "View Details",
+    "capacity": "Capacity",
+    "passengers": "passengers"
+  },
+  "gallery": {
+    "tag": "OUR MOMENTS",
+    "title": "Gallery"
+  },
+  "contact": {
+    "tag": "GET IN TOUCH",
+    "title": "Contact Us",
+    "subtitle": "Ready to experience luxury travel? Reach out to us for bookings and inquiries.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "followUs": "Follow Us",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Enter your name",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us about your travel needs...",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "Thank you! Your message has been sent successfully.",
+    "errorMessage": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "home": "Home",
+    "buses": "Buses",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try Again",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "learnMore": "Learn More",
+    "seeAll": "See All",
+    "readMore": "Read More"
+  },
+  "meta": {
+    "title": "LuxTravel | Executive Ground Travel, Redefined",
+    "description": "Experience premium bus tours across Georgia. Luxury travel with world-class comfort, curated routes, and exceptional service."
+  },
+  "error": {
+    "title": "Something Went Wrong",
+    "description": "We apologize for the inconvenience. An unexpected error has occurred.",
+    "tryAgain": "Try Again",
+    "backHome": "Back to Home",
+    "persistentError": "If the problem persists, please contact us at"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for seems to have taken a different route. Let us help you get back on track.",
+    "backHome": "Back to Home",
+    "viewFleet": "View Our Fleet",
+    "helpfulLinks": "Helpful Links",
+    "ourFleet": "Our Fleet",
+    "contactUs": "Contact Us",
+    "aboutUs": "About Us"
+  }
+}

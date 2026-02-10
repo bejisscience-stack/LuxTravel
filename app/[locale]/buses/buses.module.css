@@ -1,0 +1,159 @@
+.hero {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2669&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 5, 0.7) 0%,
+    rgba(5, 5, 5, 0.5) 50%,
+    rgba(5, 5, 5, 0.8) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.heroTitle {
+  font-family: var(--font-geo);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 200;
+  color: var(--diamond);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--silver);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding: 5rem 0;
+  background: var(--void);
+  min-height: 50vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: 0.75rem 2rem;
+  font-family: var(--font-geo);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+  color: var(--silver);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.filterButton:hover {
+  border-color: var(--silver);
+  color: var(--diamond);
+}
+
+.filterButtonActive {
+  background: var(--diamond);
+  border-color: var(--diamond);
+  color: var(--void);
+}
+
+.filterButtonActive:hover {
+  background: var(--silver);
+  border-color: var(--silver);
+  color: var(--void);
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.resultsCount {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--silver);
+  letter-spacing: 0.1em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.noResults {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.noResults p {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--silver);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 40vh;
+    min-height: 300px;
+    background-attachment: scroll;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .filters {
+    gap: 0.5rem;
+  }
+
+  .filterButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,140 @@
+/* Loading Page Styles */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-void);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo Animation */
+.logoContainer {
+  animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.logoText {
+  font-family: var(--font-geo);
+  font-size: 3rem;
+  font-weight: 200;
+  letter-spacing: 0.5em;
+  color: var(--color-diamond);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.logoAccent {
+  font-family: var(--font-geo);
+  font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--color-silver);
+}
+
+/* Loader Line */
+.loader {
+  width: 200px;
+  height: 1px;
+  background: rgba(160, 160, 160, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.loaderLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-lip-red),
+    transparent
+  );
+  animation: loadingSlide 1.5s ease-in-out infinite;
+}
+
+/* Loading Text */
+.text {
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-silver);
+  letter-spacing: 0.1em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes loadingSlide {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logoText {
+    font-size: 2.5rem;
+    letter-spacing: 0.4em;
+  }
+
+  .logoAccent {
+    font-size: 0.75rem;
+  }
+
+  .loader {
+    width: 150px;
+  }
+
+  .text {
+    font-size: 0.75rem;
+  }
+}

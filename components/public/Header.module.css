@@ -1,0 +1,252 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: padding 0.3s ease;
+}
+
+.header.scrolled {
+  padding: 16px 40px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 200;
+  border: 1px solid #F0F2F5;
+  padding: 10px 15px;
+  position: relative;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #F0F2F5;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logoAccent {
+  font-weight: 600;
+}
+
+.logoSeparator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 1px;
+  background: #F0F2F5;
+  transform: skewX(-20deg);
+  display: block;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 60px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  font-size: 0.75rem;
+  position: relative;
+  color: #F0F2F5;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  text-decoration: none;
+  transition: 0.3s;
+  mix-blend-mode: difference;
+}
+
+.navLink:hover .navUnderline {
+  width: 100%;
+}
+
+.navUnderline {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #B8182F;
+  transition: width 0.4s ease;
+  display: block;
+}
+
+.desktopSwitcher {
+  display: block;
+  mix-blend-mode: difference;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #F0F2F5;
+  cursor: pointer;
+  padding: 8px;
+  gap: 5px;
+  z-index: 101;
+  transition: border-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.hamburger:hover {
+  border-color: #B8182F;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #F0F2F5;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open .hamburgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger.open .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .hamburgerLine:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Menu Overlay */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #050505;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileMenuOverlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileNav {
+  text-align: center;
+}
+
+.mobileNavList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+.mobileNavList li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.mobileMenuOverlay.open .mobileNavList li {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.mobileNavLink {
+  display: block;
+  font-size: 2rem;
+  color: #F0F2F5;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 200;
+  text-decoration: none;
+  padding: 20px 0;
+  transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: #B8182F;
+}
+
+.mobileSwitcher {
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 24px;
+  }
+
+  .header.scrolled {
+    padding: 16px 24px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+  }
+
+  .desktopNav,
+  .desktopSwitcher {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 16px 16px;
+  }
+
+  .logo {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+
+  .mobileNavLink {
+    font-size: 1.5rem;
+    padding: 16px 0;
+  }
+}
