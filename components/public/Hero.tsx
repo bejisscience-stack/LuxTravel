@@ -13,7 +13,7 @@ interface HeroProps {
 export default function Hero({
   title,
   subtitle,
-  backgroundImage = 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2671&auto=format&fit=crop',
+  backgroundImage = '/Images/Cover.png',
 }: HeroProps) {
   const [hovered, setHovered] = useState(false)
   const t = useTranslations('hero')

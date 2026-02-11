@@ -105,7 +105,7 @@ export default function WhyChooseUs({
   tag,
   title,
   description,
-  imageUrl = 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2669&auto=format&fit=crop',
+  imageUrl = '/Images/BelowImage.png',
 }: WhyChooseUsProps) {
   const [imageHovered, setImageHovered] = useState(false)
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null)

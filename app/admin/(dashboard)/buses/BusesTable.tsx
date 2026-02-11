@@ -19,6 +19,8 @@ import {
   Users,
   MoreVertical,
   AlertTriangle,
+  Database,
+  Loader2,
 } from 'lucide-react'
 import styles from './page.module.css'
 
@@ -46,6 +48,8 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
   const [deleteModalBus, setDeleteModalBus] = useState<Bus | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [isSeeding, setIsSeeding] = useState(false)
+  const [seedMessage, setSeedMessage] = useState<string | null>(null)
   const router = useRouter()
 
   const supabase = createClient()
@@ -64,23 +68,14 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
 
     setIsDeleting(true)
     try {
-      // Delete photos from storage
-      if (deleteModalBus.photos && deleteModalBus.photos.length > 0) {
-        const filePaths = deleteModalBus.photos
-          .map((url) => {
-            const parts = url.split('/storage/v1/object/public/bus-images/')
-            return parts.length > 1 ? parts[1] : null
-          })
-          .filter((p): p is string => p !== null)
+      const response = await fetch(`/api/admin/buses?id=${deleteModalBus.id}`, {
+        method: 'DELETE',
+      })
 
-        if (filePaths.length > 0) {
-          await supabase.storage.from('bus-images').remove(filePaths)
-        }
+      if (!response.ok) {
+        const data = await response.json()
+        throw new Error(data.error || 'Failed to delete bus')
       }
-
-      const { error } = await supabase.from('buses').delete().eq('id', deleteModalBus.id)
-
-      if (error) throw error
 
       setBuses((prev) => prev.filter((b) => b.id !== deleteModalBus.id))
       setDeleteModalBus(null)
@@ -90,6 +85,34 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
       alert('Failed to delete bus. Please try again.')
     } finally {
       setIsDeleting(false)
+    }
+  }
+
+  const handleSeedData = async () => {
+    setIsSeeding(true)
+    setSeedMessage(null)
+    try {
+      const response = await fetch('/api/admin/seed-buses', {
+        method: 'POST',
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to seed data')
+      }
+
+      setSeedMessage('Bus data seeded successfully! Refreshing...')
+      setTimeout(() => {
+        setSeedMessage(null)
+        router.refresh()
+        window.location.reload()
+      }, 1500)
+    } catch (error) {
+      console.error('Error seeding data:', error)
+      setSeedMessage('Failed to seed data. Please try again.')
+    } finally {
+      setIsSeeding(false)
     }
   }
 
@@ -120,11 +143,29 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
             Manage your fleet of {buses.length} buses
           </p>
         </div>
-        <Link href="/admin/buses/new" className={styles.addButton}>
-          <Plus size={20} />
-          Add New Bus
-        </Link>
+        <div className={styles.headerActions}>
+          <button
+            onClick={handleSeedData}
+            className={styles.seedButton}
+            disabled={isSeeding}
+            title="Populate buses with stock images and data"
+          >
+            {isSeeding ? <Loader2 size={18} className={styles.spinner} /> : <Database size={18} />}
+            {isSeeding ? 'Seeding...' : 'Seed Data'}
+          </button>
+          <Link href="/admin/buses/new" className={styles.addButton}>
+            <Plus size={20} />
+            Add New Bus
+          </Link>
+        </div>
       </header>
+
+      {seedMessage && (
+        <div className={styles.seedMessage}>
+          <CheckCircle size={16} />
+          {seedMessage}
+        </div>
+      )}
 
       {/* Filters */}
       <div className={styles.filters}>

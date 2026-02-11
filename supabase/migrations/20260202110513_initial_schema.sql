@@ -289,61 +289,61 @@ INSERT INTO settings (key, value) VALUES
     ('maintenance_mode', 'false')
 ON CONFLICT (key) DO NOTHING;
 
--- Sample bus data
+-- Sample bus data with stock images
 INSERT INTO buses (name, class, capacity, description_en, description_ka, description_ru, amenities, photos, is_active) VALUES
     (
         'Mercedes-Benz Tourismo',
         'VIP',
         50,
-        'Experience ultimate luxury with our flagship Mercedes-Benz Tourismo. Featuring leather seats, personal entertainment systems, and premium amenities.',
-        'განიცადეთ უმაღლესი ფუფუნება ჩვენი ფლაგმანი Mercedes-Benz Tourismo-ით. ტყავის სავარძლები, პირადი გასართობი სისტემები და პრემიუმ კომფორტი.',
-        'Испытайте роскошь с нашим флагманским Mercedes-Benz Tourismo. Кожаные сиденья, персональные развлекательные системы и премиум удобства.',
+        'Experience ultimate luxury with our flagship Mercedes-Benz Tourismo. Featuring leather seats, personal entertainment systems, and premium amenities for an unforgettable journey.',
+        'განიცადეთ უმაღლესი ფუფუნება ჩვენი ფლაგმანი Mercedes-Benz Tourismo-ით. ტყავის სავარძლები, პირადი გასართობი სისტემები და პრემიუმ კომფორტი დაუვიწყარი მოგზაურობისთვის.',
+        'Испытайте роскошь с нашим флагманским Mercedes-Benz Tourismo. Кожаные сиденья, персональные развлекательные системы и премиум удобства для незабываемого путешествия.',
         '["wifi", "air_conditioning", "leather_seats", "usb_charging", "entertainment_system", "toilet", "minibar", "reclining_seats"]'::jsonb,
-        ARRAY[]::TEXT[],
+        ARRAY['https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop', 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2671&auto=format&fit=crop', 'https://images.unsplash.com/photo-1557223562-6c77ef16210f?q=80&w=2070&auto=format&fit=crop']::TEXT[],
         true
     ),
     (
         'Setra S 516 HDH',
         'VIP',
         48,
-        'The Setra S 516 HDH offers exceptional comfort with its spacious interior, panoramic windows, and state-of-the-art technology.',
-        'Setra S 516 HDH გთავაზობთ განსაკუთრებულ კომფორტს თავისი ვრცელი ინტერიერით, პანორამული ფანჯრებით და თანამედროვე ტექნოლოგიით.',
-        'Setra S 516 HDH предлагает исключительный комфорт с просторным интерьером, панорамными окнами и современными технологиями.',
+        'The Setra S 516 HDH offers exceptional comfort with its spacious interior, panoramic windows, and state-of-the-art technology for the most discerning travelers.',
+        'Setra S 516 HDH გთავაზობთ განსაკუთრებულ კომფორტს თავისი ვრცელი ინტერიერით, პანორამული ფანჯრებით და თანამედროვე ტექნოლოგიით ყველაზე მომთხოვნი მოგზაურებისთვის.',
+        'Setra S 516 HDH предлагает исключительный комфорт с просторным интерьером, панорамными окнами и современными технологиями для самых взыскательных путешественников.',
         '["wifi", "air_conditioning", "leather_seats", "usb_charging", "entertainment_system", "toilet", "panoramic_windows"]'::jsonb,
-        ARRAY[]::TEXT[],
+        ARRAY['https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?q=80&w=2070&auto=format&fit=crop', 'https://images.unsplash.com/photo-1600706432502-77a0e2e32431?q=80&w=2072&auto=format&fit=crop', 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2671&auto=format&fit=crop']::TEXT[],
         true
     ),
     (
         'MAN Lion''s Coach',
         'Comfort',
         55,
-        'Our MAN Lion''s Coach provides reliable comfort for medium to large groups. Perfect for corporate events and tours.',
-        'ჩვენი MAN Lion''s Coach უზრუნველყოფს საიმედო კომფორტს საშუალო და დიდი ჯგუფებისთვის. იდეალურია კორპორატიული ღონისძიებებისთვის.',
-        'Наш MAN Lion''s Coach обеспечивает надежный комфорт для средних и больших групп. Идеально подходит для корпоративных мероприятий.',
+        'Our MAN Lion''s Coach provides reliable comfort for medium to large groups. Perfect for corporate events, tours, and long-distance travel with all essential amenities.',
+        'ჩვენი MAN Lion''s Coach უზრუნველყოფს საიმედო კომფორტს საშუალო და დიდი ჯგუფებისთვის. იდეალურია კორპორატიული ღონისძიებებისთვის, ტურებისთვის და შორ მანძილებზე მოგზაურობისთვის.',
+        'Наш MAN Lion''s Coach обеспечивает надежный комфорт для средних и больших групп. Идеально подходит для корпоративных мероприятий, туров и дальних поездок.',
         '["wifi", "air_conditioning", "usb_charging", "toilet", "reclining_seats"]'::jsonb,
-        ARRAY[]::TEXT[],
+        ARRAY['https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2032&auto=format&fit=crop', 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop']::TEXT[],
         true
     ),
     (
         'Volvo 9700',
         'Comfort',
         52,
-        'The Volvo 9700 combines Scandinavian design with comfort and safety. An excellent choice for long-distance travel.',
-        'Volvo 9700 აერთიანებს სკანდინავიურ დიზაინს კომფორტთან და უსაფრთხოებასთან. შესანიშნავი არჩევანი შორ მანძილებზე მოგზაურობისთვის.',
-        'Volvo 9700 сочетает скандинавский дизайн с комфортом и безопасностью. Отличный выбор для дальних поездок.',
+        'The Volvo 9700 combines Scandinavian design with comfort and safety. An excellent choice for long-distance travel with modern amenities and reliable performance.',
+        'Volvo 9700 აერთიანებს სკანდინავიურ დიზაინს კომფორტთან და უსაფრთხოებასთან. შესანიშნავი არჩევანი შორ მანძილებზე მოგზაურობისთვის თანამედროვე კომფორტითა და საიმედო მუშაობით.',
+        'Volvo 9700 сочетает скандинавский дизайн с комфортом и безопасностью. Отличный выбор для дальних поездок с современными удобствами и надежной работой.',
         '["wifi", "air_conditioning", "usb_charging", "toilet", "reclining_seats", "reading_lights"]'::jsonb,
-        ARRAY[]::TEXT[],
+        ARRAY['https://images.unsplash.com/photo-1600706432502-77a0e2e32431?q=80&w=2072&auto=format&fit=crop', 'https://images.unsplash.com/photo-1557223562-6c77ef16210f?q=80&w=2070&auto=format&fit=crop']::TEXT[],
         true
     ),
     (
         'Iveco Magelys',
         'Standard',
         60,
-        'Our Iveco Magelys offers reliable transportation for larger groups at an affordable price without compromising on comfort.',
-        'ჩვენი Iveco Magelys გთავაზობთ საიმედო ტრანსპორტირებას დიდი ჯგუფებისთვის ხელმისაწვდომ ფასად კომფორტზე კომპრომისის გარეშე.',
-        'Наш Iveco Magelys предлагает надежную перевозку для больших групп по доступной цене без ущерба для комфорта.',
+        'Our Iveco Magelys offers reliable transportation for larger groups at an affordable price without compromising on essential comfort and safety features.',
+        'ჩვენი Iveco Magelys გთავაზობთ საიმედო ტრანსპორტირებას დიდი ჯგუფებისთვის ხელმისაწვდომ ფასად კომფორტსა და უსაფრთხოებაზე კომპრომისის გარეშე.',
+        'Наш Iveco Magelys предлагает надежную перевозку для больших групп по доступной цене без ущерба для комфорта и безопасности.',
         '["air_conditioning", "usb_charging", "reclining_seats"]'::jsonb,
-        ARRAY[]::TEXT[],
+        ARRAY['https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2671&auto=format&fit=crop', 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=2032&auto=format&fit=crop']::TEXT[],
         true
     )
 ON CONFLICT DO NOTHING;
