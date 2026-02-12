@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -33,17 +33,17 @@ interface BusDetailClientProps {
   locale: Locale
 }
 
-const amenityLabels: Record<BusAmenity, string> = {
-  wifi: 'WiFi',
-  air_conditioning: 'Air Conditioning',
-  leather_seats: 'Leather Seats',
-  usb_charging: 'USB Charging',
-  entertainment_system: 'Entertainment System',
-  toilet: 'Onboard Toilet',
-  minibar: 'Minibar',
-  reclining_seats: 'Reclining Seats',
-  panoramic_windows: 'Panoramic Windows',
-  reading_lights: 'Reading Lights',
+const amenityTranslationKeys: Record<BusAmenity, string> = {
+  wifi: 'amenityWifi',
+  air_conditioning: 'amenityAirConditioning',
+  leather_seats: 'amenityLeatherSeats',
+  usb_charging: 'amenityUsbCharging',
+  entertainment_system: 'amenityEntertainmentSystem',
+  toilet: 'amenityToilet',
+  minibar: 'amenityMinibar',
+  reclining_seats: 'amenityRecliningSeats',
+  panoramic_windows: 'amenityPanoramicWindows',
+  reading_lights: 'amenityReadingLights',
 }
 
 const amenityIcons: Record<BusAmenity, React.ReactNode> = {
@@ -126,6 +126,7 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const t = useTranslations('fleet')
+  const tBuses = useTranslations('buses')
   const tContact = useTranslations('contact')
   const tCommon = useTranslations('common')
 
@@ -172,6 +173,33 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [lightboxOpen, closeLightbox, goToPrevious, goToNext])
+
+  // Swipe gesture support for lightbox
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }, [])
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      if (deltaX > 0) {
+        goToPrevious()
+      } else {
+        goToNext()
+      }
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+  }, [goToPrevious, goToNext])
 
   const scrollToContact = () => {
     window.location.href = `/${locale}#contact`
@@ -239,8 +267,8 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
           <div className={styles.contentGrid}>
             {/* Description */}
             <div className={styles.descriptionColumn}>
-              <h2 className={styles.sectionTitle}>About This Bus</h2>
-              <p className={styles.description}>{bus.description || 'Experience luxury travel at its finest with our premium bus service.'}</p>
+              <h2 className={styles.sectionTitle}>{tBuses('aboutTitle')}</h2>
+              <p className={styles.description}>{bus.description || tBuses('defaultDescription')}</p>
 
               <button className={styles.ctaButton} onClick={scrollToContact}>
                 <span>{tContact('tag')}</span>
@@ -253,10 +281,10 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
 
             {/* Specifications */}
             <div className={styles.specsColumn}>
-              <h2 className={styles.sectionTitle}>Specifications</h2>
+              <h2 className={styles.sectionTitle}>{tBuses('specificationsTitle')}</h2>
               <div className={styles.specsList}>
                 <div className={styles.specItem}>
-                  <span className={styles.specLabel}>Class</span>
+                  <span className={styles.specLabel}>{tBuses('classLabel')}</span>
                   <span className={styles.specValue}>{bus.busClass}</span>
                 </div>
                 <div className={styles.specItem}>
@@ -270,14 +298,14 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
           {/* Amenities */}
           {bus.amenities.length > 0 && (
             <div className={styles.amenitiesSection}>
-              <h2 className={styles.sectionTitle}>Amenities</h2>
+              <h2 className={styles.sectionTitle}>{tBuses('amenitiesTitle')}</h2>
               <div className={styles.amenitiesGrid}>
                 {bus.amenities.map((amenity) => (
                   <div key={amenity} className={styles.amenityItem}>
                     <div className={styles.amenityIcon}>
                       {amenityIcons[amenity]}
                     </div>
-                    <span className={styles.amenityLabel}>{amenityLabels[amenity]}</span>
+                    <span className={styles.amenityLabel}>{tBuses(amenityTranslationKeys[amenity])}</span>
                   </div>
                 ))}
               </div>
@@ -290,7 +318,7 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
       {relatedBuses.length > 0 && (
         <section className={styles.relatedSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Other Buses</h2>
+            <h2 className={styles.sectionTitle}>{tBuses('otherBuses')}</h2>
             <div className={styles.relatedGrid}>
               {relatedBuses.map((relatedBus) => (
                 <BusCard
@@ -309,7 +337,7 @@ export default function BusDetailClient({ bus, relatedBuses, locale }: BusDetail
 
       {/* Lightbox */}
       {lightboxOpen && (
-        <div className={styles.lightbox} onClick={closeLightbox}>
+        <div className={styles.lightbox} onClick={closeLightbox} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <button className={styles.lightboxClose} onClick={closeLightbox} aria-label="Close">
             <X size={32} />
           </button>

@@ -1,6 +1,6 @@
 .section {
   padding: 120px 40px;
-  background: #000000;
+  background: #050505;
 }
 
 .header {
@@ -101,5 +101,23 @@
 
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 320px) {
+  .section {
+    padding: 48px 12px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
   }
 }

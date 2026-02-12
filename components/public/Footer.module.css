@@ -175,10 +175,16 @@ a.contactValue:hover {
 
   .nav {
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .navLink {
     font-size: 0.7rem;
+    padding: 8px 4px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .socials {
@@ -186,17 +192,17 @@ a.contactValue:hover {
   }
 
   .socialLink {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
 
   .socialLink svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .contactLabel {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 
   .contactValue {
@@ -205,5 +211,28 @@ a.contactValue:hover {
 
   .copyright {
     font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 24px 12px 20px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 0.65rem;
+  }
+
+  .contactValue {
+    font-size: 0.9rem;
+    word-break: break-all;
   }
 }

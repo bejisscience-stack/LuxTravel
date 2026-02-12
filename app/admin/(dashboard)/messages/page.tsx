@@ -54,7 +54,7 @@ export default function MessagesPage() {
     try {
       const { error } = await supabase
         .from('contact_messages')
-        .update({ is_read: newStatus })
+        .update({ is_read: newStatus } as never)
         .eq('id', msg.id)
 
       if (error) throw error
@@ -88,7 +88,7 @@ export default function MessagesPage() {
       try {
         const { error } = await supabase
           .from('contact_messages')
-          .update({ is_read: true })
+          .update({ is_read: true } as never)
           .eq('id', msg.id)
 
         if (error) throw error

@@ -120,7 +120,7 @@ export default function SettingsPage() {
 
       const { error } = await supabase
         .from('settings')
-        .upsert(upsertData, { onConflict: 'key' })
+        .upsert(upsertData as never, { onConflict: 'key' })
 
       if (error) throw error
 

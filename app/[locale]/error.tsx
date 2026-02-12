@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react'
 import Link from 'next/link'
 import styles from './error.module.css'
@@ -13,6 +13,7 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   const t = useTranslations('error')
+  const locale = useLocale()
 
   useEffect(() => {
     // Log error to console in development
@@ -44,7 +45,7 @@ export default function Error({ error, reset }: ErrorProps) {
             <RefreshCw size={18} />
             <span>{t('tryAgain')}</span>
           </button>
-          <Link href="/" className={styles.secondaryButton}>
+          <Link href={`/${locale}`} className={styles.secondaryButton}>
             <Home size={18} />
             <span>{t('backHome')}</span>
           </Link>

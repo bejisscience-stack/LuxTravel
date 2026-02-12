@@ -125,3 +125,20 @@
   font-weight: 300;
   opacity: 0.7;
 }
+
+/* Mobile touch targets */
+@media (max-width: 768px) {
+  .trigger {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  .option {
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+
+  .dropdown {
+    min-width: 160px;
+  }
+}

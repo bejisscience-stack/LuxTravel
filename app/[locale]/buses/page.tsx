@@ -11,12 +11,13 @@ type Props = {
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' })
+  const tBuses = await getTranslations({ locale, namespace: 'buses' })
 
   return {
-    title: `Our Fleet | ${t('title')}`,
+    title: `${tBuses('metaTitle')} | ${t('title')}`,
     description: t('description'),
     openGraph: {
-      title: `Our Fleet | ${t('title')}`,
+      title: `${tBuses('metaTitle')} | ${t('title')}`,
       description: t('description'),
       locale: locale,
       type: 'website',
@@ -60,7 +61,7 @@ export default async function BusesPage({ params: { locale } }: Props) {
 
   return (
     <main>
-      <BusesPageClient buses={transformedBuses} locale={locale} />
+      <BusesPageClient buses={transformedBuses} />
       <Footer />
     </main>
   )

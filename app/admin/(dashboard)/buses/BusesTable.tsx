@@ -17,7 +17,6 @@ import {
   Wrench,
   XCircle,
   Users,
-  MoreVertical,
   AlertTriangle,
   Database,
   Loader2,
@@ -47,7 +46,6 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
   const [filterStatus, setFilterStatus] = useState<MaintenanceStatus | 'all'>('all')
   const [deleteModalBus, setDeleteModalBus] = useState<Bus | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [isSeeding, setIsSeeding] = useState(false)
   const [seedMessage, setSeedMessage] = useState<string | null>(null)
   const router = useRouter()
@@ -68,9 +66,21 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
 
     setIsDeleting(true)
     try {
-      const response = await fetch(`/api/admin/buses?id=${deleteModalBus.id}`, {
-        method: 'DELETE',
-      })
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session?.access_token) {
+        throw new Error('Not authenticated')
+      }
+
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+      const response = await fetch(
+        `${supabaseUrl}/functions/v1/admin-buses?id=${deleteModalBus.id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${session.access_token}`,
+          },
+        }
+      )
 
       if (!response.ok) {
         const data = await response.json()
@@ -92,8 +102,18 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
     setIsSeeding(true)
     setSeedMessage(null)
     try {
-      const response = await fetch('/api/admin/seed-buses', {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        throw new Error('Not authenticated')
+      }
+
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+      const response = await fetch(`${supabaseUrl}/functions/v1/seed-buses`, {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`,
+          'Content-Type': 'application/json',
+        },
       })
 
       const data = await response.json()
@@ -120,7 +140,7 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
     try {
       const { error } = await supabase
         .from('buses')
-        .update({ is_active: !bus.is_active })
+        .update({ is_active: !bus.is_active } as never)
         .eq('id', bus.id)
 
       if (error) throw error
@@ -292,14 +312,15 @@ export default function BusesTable({ initialBuses }: BusesTableProps) {
                     </td>
                     <td>
                       <div className={styles.actions}>
-                        <Link
+                        <a
                           href={`/en/buses/${bus.id}`}
                           className={styles.actionButton}
                           title="View on site"
                           target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <Eye size={16} />
-                        </Link>
+                        </a>
                         <Link
                           href={`/admin/buses/${bus.id}`}
                           className={styles.actionButton}

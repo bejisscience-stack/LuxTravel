@@ -103,7 +103,7 @@ export default function GalleryPage() {
             alt_text_en: '',
             alt_text_ka: '',
             alt_text_ru: '',
-          })
+          } as never)
 
         if (insertError) throw insertError
       }
@@ -171,7 +171,7 @@ export default function GalleryPage() {
           alt_text_en: editingImage.alt_text_en || null,
           alt_text_ka: editingImage.alt_text_ka || null,
           alt_text_ru: editingImage.alt_text_ru || null,
-        })
+        } as never)
         .eq('id', editingImage.id)
 
       if (error) throw error
@@ -252,7 +252,7 @@ export default function GalleryPage() {
       for (const update of updates) {
         await supabase
           .from('gallery')
-          .update({ sort_order: update.sort_order })
+          .update({ sort_order: update.sort_order } as never)
           .eq('id', update.id)
       }
     } catch (err) {

@@ -16,10 +16,11 @@ export async function generateStaticParams() {
   }
   try {
     const supabase = createServiceClient()
-    const { data: buses } = await supabase
+    const { data } = await supabase
       .from('buses')
-      .select('id')
+      .select('*')
       .eq('is_active', true)
+    const buses = data as Bus[] | null
     if (!buses) return []
     return buses.map((bus) => ({ id: bus.id }))
   } catch {
@@ -34,11 +35,12 @@ export async function generateMetadata({ params: { locale, id } }: Props): Promi
   }
   try {
     const supabase = await createClient()
-    const { data: bus } = await supabase
+    const { data } = await supabase
       .from('buses')
       .select('*')
       .eq('id', id)
       .single()
+    const bus = data as Bus | null
     if (!bus) return { title: 'Bus Not Found' }
     const descriptionKey = `description_${locale}` as keyof Bus
     const description = (bus[descriptionKey] as string) || bus.description_en || t('description')

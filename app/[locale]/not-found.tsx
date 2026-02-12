@@ -1,10 +1,13 @@
-import { useTranslations } from 'next-intl'
+'use client'
+
+import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import { Home, ArrowLeft, Search } from 'lucide-react'
 import styles from './not-found.module.css'
 
 export default function NotFound() {
   const t = useTranslations('notFound')
+  const locale = useLocale()
 
   return (
     <div className={styles.container}>
@@ -23,11 +26,11 @@ export default function NotFound() {
 
         {/* Navigation Options */}
         <div className={styles.navigation}>
-          <Link href="/" className={styles.primaryButton}>
+          <Link href={`/${locale}`} className={styles.primaryButton}>
             <Home size={18} />
             <span>{t('backHome')}</span>
           </Link>
-          <Link href="/buses" className={styles.secondaryButton}>
+          <Link href={`/${locale}/buses`} className={styles.secondaryButton}>
             <Search size={18} />
             <span>{t('viewFleet')}</span>
           </Link>
@@ -37,15 +40,15 @@ export default function NotFound() {
         <div className={styles.helpfulLinks}>
           <span className={styles.helpfulTitle}>{t('helpfulLinks')}</span>
           <div className={styles.links}>
-            <Link href="/#fleet" className={styles.link}>
+            <Link href={`/${locale}#fleet`} className={styles.link}>
               <ArrowLeft size={14} />
               <span>{t('ourFleet')}</span>
             </Link>
-            <Link href="/#contact" className={styles.link}>
+            <Link href={`/${locale}#contact`} className={styles.link}>
               <ArrowLeft size={14} />
               <span>{t('contactUs')}</span>
             </Link>
-            <Link href="/#about" className={styles.link}>
+            <Link href={`/${locale}#about`} className={styles.link}>
               <ArrowLeft size={14} />
               <span>{t('aboutUs')}</span>
             </Link>

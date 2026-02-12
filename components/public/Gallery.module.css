@@ -1,7 +1,7 @@
 /* Gallery Section - matches Fleet design system */
 .section {
   padding: 120px 40px;
-  background: #000000;
+  background: #050505;
 }
 
 /* Section Header - same as Fleet */
@@ -193,6 +193,24 @@
   letter-spacing: 0.1em;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+
+  .lightbox {
+    animation: none;
+  }
+
+  .overlay {
+    transition: none;
+  }
+
+  .zoomIcon {
+    transition: none;
+  }
+}
+
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
   .grid {
@@ -271,7 +289,12 @@
   }
 
   .navButton {
-    padding: 10px;
+    padding: 12px;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navButton svg {
@@ -279,7 +302,31 @@
     height: 24px;
   }
 
+  .closeButton {
+    padding: 12px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
   .counter {
     font-size: 0.75rem;
+  }
+
+  .imageWrapper {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .overlay {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .section {
+    padding: 48px 12px;
+  }
+
+  .title {
+    font-size: 1.25rem;
   }
 }

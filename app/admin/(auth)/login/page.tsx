@@ -31,7 +31,11 @@ function LoginForm() {
         return
       }
 
-      const redirectTo = searchParams.get('redirectTo') || '/admin'
+      const rawRedirect = searchParams.get('redirectTo') || '/admin'
+      // Prevent open redirect: only allow relative paths starting with /admin
+      const redirectTo = rawRedirect.startsWith('/admin') && !rawRedirect.includes('://') && !rawRedirect.startsWith('//')
+        ? rawRedirect
+        : '/admin'
       router.refresh()
       router.push(redirectTo)
     } catch (err) {

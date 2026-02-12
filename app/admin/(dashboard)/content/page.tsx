@@ -64,7 +64,6 @@ export default function ContentPage() {
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<'en' | 'ka' | 'ru'>('en')
-  const [currentUploadKey, setCurrentUploadKey] = useState<string | null>(null)
 
   useEffect(() => {
     fetchContent()
@@ -203,7 +202,7 @@ export default function ContentPage() {
 
       const { error } = await supabase
         .from('site_content')
-        .upsert(upsertData, { onConflict: 'key' })
+        .upsert(upsertData as never, { onConflict: 'key' })
 
       if (error) throw error
 

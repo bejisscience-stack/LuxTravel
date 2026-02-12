@@ -31,6 +31,33 @@
     "capacity": "Capacity",
     "passengers": "passengers"
   },
+  "buses": {
+    "metaTitle": "Our Fleet",
+    "filterAll": "All",
+    "filterStandard": "Standard",
+    "filterComfort": "Comfort",
+    "filterVip": "VIP",
+    "busSingular": "bus",
+    "busPlural": "buses",
+    "noResults": "No buses found for the selected filter.",
+    "loadingJourney": "Loading your journey...",
+    "aboutTitle": "About This Bus",
+    "specificationsTitle": "Specifications",
+    "amenitiesTitle": "Amenities",
+    "otherBuses": "Other Buses",
+    "classLabel": "Class",
+    "defaultDescription": "Experience luxury travel at its finest with our premium bus service.",
+    "amenityWifi": "WiFi",
+    "amenityAirConditioning": "Air Conditioning",
+    "amenityLeatherSeats": "Leather Seats",
+    "amenityUsbCharging": "USB Charging",
+    "amenityEntertainmentSystem": "Entertainment System",
+    "amenityToilet": "Onboard Toilet",
+    "amenityMinibar": "Minibar",
+    "amenityRecliningSeats": "Reclining Seats",
+    "amenityPanoramicWindows": "Panoramic Windows",
+    "amenityReadingLights": "Reading Lights"
+  },
   "gallery": {
     "tag": "OUR MOMENTS",
     "title": "Gallery"

@@ -45,8 +45,7 @@ export default function Hero({
         <div className={styles.lineBottom}></div>
 
         <h1 className={styles.title}>
-          {displayTitle.split(' ').slice(0, -1).join(' ')}<br />
-          {displayTitle.split(' ').slice(-1)}
+          {displayTitle}
         </h1>
         <p className={styles.subtitle}>{displaySubtitle}</p>
 

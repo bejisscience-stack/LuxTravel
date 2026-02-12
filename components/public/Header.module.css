@@ -245,8 +245,30 @@
     padding: 6px 10px;
   }
 
+  .hamburger {
+    width: 44px;
+    height: 44px;
+  }
+
   .mobileNavLink {
     font-size: 1.5rem;
     padding: 16px 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    font-size: 0.85rem;
+    padding: 5px 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .mobileNavLink {
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
   }
 }

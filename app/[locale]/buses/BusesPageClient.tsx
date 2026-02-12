@@ -15,7 +15,6 @@ interface Bus {
 
 interface BusesPageClientProps {
   buses: Bus[]
-  locale: string
 }
 
 type FilterType = 'all' | 'Standard' | 'Comfort' | 'VIP'
@@ -23,13 +22,14 @@ type FilterType = 'all' | 'Standard' | 'Comfort' | 'VIP'
 export default function BusesPageClient({ buses }: BusesPageClientProps) {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all')
   const t = useTranslations('fleet')
+  const tBuses = useTranslations('buses')
   const tNav = useTranslations('nav')
 
-  const filters: { key: FilterType; label: string }[] = [
-    { key: 'all', label: 'All' },
-    { key: 'Standard', label: 'Standard' },
-    { key: 'Comfort', label: 'Comfort' },
-    { key: 'VIP', label: 'VIP' },
+  const filters: { key: FilterType; labelKey: 'filterAll' | 'filterStandard' | 'filterComfort' | 'filterVip' }[] = [
+    { key: 'all', labelKey: 'filterAll' },
+    { key: 'Standard', labelKey: 'filterStandard' },
+    { key: 'Comfort', labelKey: 'filterComfort' },
+    { key: 'VIP', labelKey: 'filterVip' },
   ]
 
   const filteredBuses = activeFilter === 'all'
@@ -55,14 +55,14 @@ export default function BusesPageClient({ buses }: BusesPageClientProps) {
                 onClick={() => setActiveFilter(filter.key)}
                 className={`${styles.filterButton} ${activeFilter === filter.key ? styles.filterButtonActive : ''}`}
               >
-                {filter.label}
+                {tBuses(filter.labelKey)}
               </button>
             ))}
           </div>
 
           <div className={styles.resultsInfo}>
             <span className={styles.resultsCount}>
-              {filteredBuses.length} {filteredBuses.length === 1 ? 'bus' : 'buses'}
+              {filteredBuses.length} {filteredBuses.length === 1 ? tBuses('busSingular') : tBuses('busPlural')}
             </span>
           </div>
 
@@ -81,7 +81,7 @@ export default function BusesPageClient({ buses }: BusesPageClientProps) {
 
           {filteredBuses.length === 0 && (
             <div className={styles.noResults}>
-              <p>No buses found for the selected filter.</p>
+              <p>{tBuses('noResults')}</p>
             </div>
           )}
         </div>

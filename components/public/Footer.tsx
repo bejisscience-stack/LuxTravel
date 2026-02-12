@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { socialLinks, contactInfo } from '@/lib/constants'
+import TikTokIcon from '@/components/icons/TikTokIcon'
 import styles from './Footer.module.css'
 
 interface SettingsData {
@@ -21,6 +22,7 @@ interface FooterProps {
 
 export default function Footer({ settings }: FooterProps) {
   const t = useTranslations('footer')
+  const tContact = useTranslations('contact')
   const locale = useLocale()
   const currentYear = new Date().getFullYear()
 
@@ -75,19 +77,19 @@ export default function Footer({ settings }: FooterProps) {
         {/* Middle Row: Contact Info */}
         <div className={styles.contactRow}>
           <div className={styles.contactItem}>
-            <span className={styles.contactLabel}>Email</span>
+            <span className={styles.contactLabel}>{tContact('email')}</span>
             <a href={`mailto:${email}`} className={styles.contactValue}>
               {email}
             </a>
           </div>
           <div className={styles.contactItem}>
-            <span className={styles.contactLabel}>Phone</span>
+            <span className={styles.contactLabel}>{tContact('phone')}</span>
             <a href={`tel:${phone.replace(/\s/g, '')}`} className={styles.contactValue}>
               {phone}
             </a>
           </div>
           <div className={styles.contactItem}>
-            <span className={styles.contactLabel}>Address</span>
+            <span className={styles.contactLabel}>{tContact('address')}</span>
             <span className={styles.contactValue}>{address}</span>
           </div>
         </div>
@@ -121,10 +123,3 @@ function InstagramIcon() {
   )
 }
 
-function TikTokIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-    </svg>
-  )
-}

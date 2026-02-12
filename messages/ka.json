@@ -31,6 +31,33 @@
     "capacity": "ტევადობა",
     "passengers": "მგზავრი"
   },
+  "buses": {
+    "metaTitle": "ჩვენი ავტოპარკი",
+    "filterAll": "ყველა",
+    "filterStandard": "სტანდარტი",
+    "filterComfort": "კომფორტი",
+    "filterVip": "VIP",
+    "busSingular": "ავტობუსი",
+    "busPlural": "ავტობუსი",
+    "noResults": "არჩეული ფილტრით ავტობუსები ვერ მოიძებნა.",
+    "loadingJourney": "თქვენი მოგზაურობა იტვირთება...",
+    "aboutTitle": "ავტობუსის შესახებ",
+    "specificationsTitle": "სპეციფიკაციები",
+    "amenitiesTitle": "კეთილმოწყობა",
+    "otherBuses": "სხვა ავტობუსები",
+    "classLabel": "კლასი",
+    "defaultDescription": "განიცადეთ ფუფუნების მოგზაურობა ჩვენი პრემიუმ ავტობუსით.",
+    "amenityWifi": "WiFi",
+    "amenityAirConditioning": "კონდიციონერი",
+    "amenityLeatherSeats": "ტყავის სავარძლები",
+    "amenityUsbCharging": "USB დამტენი",
+    "amenityEntertainmentSystem": "გასართობი სისტემა",
+    "amenityToilet": "ბორტზე ტუალეტი",
+    "amenityMinibar": "მინიბარი",
+    "amenityRecliningSeats": "დასაკეცი სავარძლები",
+    "amenityPanoramicWindows": "პანორამული ფანჯრები",
+    "amenityReadingLights": "საკითხავი განათება"
+  },
   "gallery": {
     "tag": "ჩვენი მომენტები",
     "title": "გალერეა"

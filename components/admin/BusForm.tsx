@@ -239,13 +239,13 @@ export default function BusForm({ bus, isEditing = false }: BusFormProps) {
       if (isEditing && bus) {
         const { error } = await supabase
           .from('buses')
-          .update(busData)
+          .update(busData as never)
           .eq('id', bus.id)
 
         if (error) throw error
         setSuccessMessage('Bus updated successfully!')
       } else {
-        const { error } = await supabase.from('buses').insert([busData])
+        const { error } = await supabase.from('buses').insert([busData] as never)
 
         if (error) throw error
         setSuccessMessage('Bus created successfully!')

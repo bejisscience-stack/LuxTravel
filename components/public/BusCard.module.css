@@ -127,14 +127,39 @@
   }
 
   .footer {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    height: 350px;
+    height: 380px;
     padding: 24px 20px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .class {
+    font-size: 0.65rem;
+  }
+
+  .footer {
+    font-size: 0.7rem;
+  }
+
+  .viewDetails {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    height: 340px;
+    padding: 20px 16px;
   }
 
   .name {

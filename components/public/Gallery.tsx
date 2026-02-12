@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import Image from 'next/image'
 import styles from './Gallery.module.css'
@@ -23,6 +23,9 @@ export default function Gallery({ images }: GalleryProps) {
   const locale = useLocale()
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const lightboxRef = useCallback((node: HTMLDivElement | null) => {
+    if (node) node.focus()
+  }, [])
 
   const getAltText = (image: GalleryImage): string => {
     const altKey = `alt_text_${locale}` as keyof GalleryImage
@@ -70,6 +73,34 @@ export default function Gallery({ images }: GalleryProps) {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [selectedIndex, closeLightbox, goToPrevious, goToNext])
 
+  // Swipe gesture support for lightbox
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }, [])
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+
+    // Only trigger if horizontal swipe is dominant
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      if (deltaX > 0) {
+        goToPrevious()
+      } else {
+        goToNext()
+      }
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+  }, [goToPrevious, goToNext])
+
   if (!images || images.length === 0) {
     return null
   }
@@ -90,6 +121,10 @@ export default function Gallery({ images }: GalleryProps) {
             onMouseEnter={() => setHoveredId(image.id)}
             onMouseLeave={() => setHoveredId(null)}
             onClick={() => openLightbox(index)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(index) } }}
+            role="button"
+            tabIndex={0}
+            aria-label={`View ${getAltText(image)}`}
           >
             <Image
               src={image.image_url}
@@ -112,7 +147,29 @@ export default function Gallery({ images }: GalleryProps) {
       </div>
 
       {selectedIndex !== null && (
-        <div className={styles.lightbox} onClick={closeLightbox}>
+        <div
+          className={styles.lightbox}
+          onClick={closeLightbox}
+          ref={lightboxRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image lightbox"
+          tabIndex={-1}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onKeyDown={(e) => {
+            if (e.key === 'Tab') {
+              const focusable = e.currentTarget.querySelectorAll<HTMLElement>('button')
+              const first = focusable[0]
+              const last = focusable[focusable.length - 1]
+              if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus() }
+              } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus() }
+              }
+            }
+          }}
+        >
           <button className={styles.closeButton} onClick={closeLightbox} aria-label="Close">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M18 6L6 18M6 6l12 12" />

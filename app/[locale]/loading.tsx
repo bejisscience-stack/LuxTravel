@@ -16,9 +16,6 @@ export default function Loading() {
         <div className={styles.loader}>
           <div className={styles.loaderLine}></div>
         </div>
-
-        {/* Loading Text */}
-        <p className={styles.text}>Loading your journey...</p>
       </div>
     </div>
   )

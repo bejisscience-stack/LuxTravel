@@ -122,8 +122,7 @@ export default function WhyChooseUs({
         <div className={styles.content}>
           <span className={styles.tag}>{displayTag}</span>
           <h2 className={styles.title}>
-            {displayTitle.split(' ')[0]}<br />
-            {displayTitle.split(' ').slice(1).join(' ')}
+            {displayTitle}
           </h2>
           <p className={styles.description}>{displayDescription}</p>
 

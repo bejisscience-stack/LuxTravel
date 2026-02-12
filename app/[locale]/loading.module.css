@@ -138,3 +138,19 @@
     font-size: 0.75rem;
   }
 }
+
+@media (max-width: 320px) {
+  .logoText {
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+  }
+
+  .logoAccent {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  .loader {
+    width: 120px;
+  }
+}

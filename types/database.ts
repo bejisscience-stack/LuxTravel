@@ -82,6 +82,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Omit<Bus, 'id' | 'created_at' | 'updated_at'>>;
+        Relationships: [];
       };
       site_content: {
         Row: SiteContent;
@@ -91,6 +92,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Omit<SiteContent, 'id' | 'created_at' | 'updated_at'>>;
+        Relationships: [];
       };
       gallery: {
         Row: GalleryImage;
@@ -99,6 +101,7 @@ export interface Database {
           created_at?: string;
         };
         Update: Partial<Omit<GalleryImage, 'id' | 'created_at'>>;
+        Relationships: [];
       };
       settings: {
         Row: Setting;
@@ -108,6 +111,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: Partial<Omit<Setting, 'id' | 'created_at' | 'updated_at'>>;
+        Relationships: [];
       };
       contact_messages: {
         Row: ContactMessage;
@@ -117,14 +121,17 @@ export interface Database {
           is_read?: boolean;
         };
         Update: Partial<Pick<ContactMessage, 'is_read'>>;
+        Relationships: [];
       };
     };
     Views: {
       active_buses_view: {
         Row: Omit<Bus, 'is_active'>;
+        Relationships: [];
       };
       unread_messages_view: {
         Row: ContactMessage;
+        Relationships: [];
       };
     };
     Functions: {

@@ -31,6 +31,33 @@
     "capacity": "Вместимость",
     "passengers": "пассажиров"
   },
+  "buses": {
+    "metaTitle": "Наш автопарк",
+    "filterAll": "Все",
+    "filterStandard": "Стандарт",
+    "filterComfort": "Комфорт",
+    "filterVip": "VIP",
+    "busSingular": "автобус",
+    "busPlural": "автобусов",
+    "noResults": "По выбранному фильтру автобусы не найдены.",
+    "loadingJourney": "Загружаем ваше путешествие...",
+    "aboutTitle": "Об этом автобусе",
+    "specificationsTitle": "Характеристики",
+    "amenitiesTitle": "Удобства",
+    "otherBuses": "Другие автобусы",
+    "classLabel": "Класс",
+    "defaultDescription": "Испытайте роскошное путешествие с нашим премиум автобусным сервисом.",
+    "amenityWifi": "WiFi",
+    "amenityAirConditioning": "Кондиционер",
+    "amenityLeatherSeats": "Кожаные сиденья",
+    "amenityUsbCharging": "USB зарядка",
+    "amenityEntertainmentSystem": "Развлекательная система",
+    "amenityToilet": "Туалет на борту",
+    "amenityMinibar": "Минибар",
+    "amenityRecliningSeats": "Откидные сиденья",
+    "amenityPanoramicWindows": "Панорамные окна",
+    "amenityReadingLights": "Лампы для чтения"
+  },
   "gallery": {
     "tag": "НАШИ МОМЕНТЫ",
     "title": "Галерея"
