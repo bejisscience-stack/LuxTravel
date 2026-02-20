@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Montserrat, Cormorant_Garamond } from 'next/font/google'
 import '@/styles/globals.css'
 
@@ -16,6 +16,12 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
 
 export const metadata: Metadata = {
   title: 'LuxTravel | Executive Ground Travel, Redefined',

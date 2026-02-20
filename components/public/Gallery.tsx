@@ -130,7 +130,7 @@ export default function Gallery({ images }: GalleryProps) {
               src={image.image_url}
               alt={getAltText(image)}
               fill
-              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              sizes="(max-width: 600px) 50vw, (max-width: 1024px) 33vw, 25vw"
               className={`${styles.image} ${hoveredId === image.id ? styles.imageHovered : ''}`}
             />
             <div className={`${styles.overlay} ${hoveredId === image.id ? styles.overlayHovered : ''}`}>

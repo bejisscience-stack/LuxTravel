@@ -34,6 +34,8 @@
   letter-spacing: 0.15em;
   font-weight: 300;
   color: #F0F2F5;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .class {
@@ -56,16 +58,23 @@
 
 .image {
   object-fit: cover;
-  opacity: 0.4;
-  filter: grayscale(100%);
+  opacity: 1;
+  filter: none;
   transition: all 0.5s ease;
-  transform: scale(0.8);
+  transform: scale(0.9);
 }
 
-.imageHovered {
-  opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(0.9);
+@media (hover: hover) {
+  .image {
+    opacity: 0.4;
+    filter: grayscale(100%);
+    transform: scale(0.8);
+  }
+  .imageHovered {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(0.9);
+  }
 }
 
 .footer {

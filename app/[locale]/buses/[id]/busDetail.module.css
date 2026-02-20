@@ -562,7 +562,7 @@
   }
 
   .lightboxContent {
-    width: 100vw;
+    width: calc(100vw - 32px);
     height: 60vh;
   }
 }

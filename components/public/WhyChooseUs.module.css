@@ -35,6 +35,8 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 300;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .description {
@@ -124,6 +126,10 @@
 }
 
 @media (max-width: 1024px) {
+  .section {
+    min-height: auto;
+  }
+
   .grid {
     grid-template-columns: 1fr;
     min-height: auto;

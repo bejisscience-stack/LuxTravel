@@ -29,6 +29,8 @@
   letter-spacing: 0.15em;
   font-weight: 300;
   margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .divider {
@@ -60,16 +62,22 @@
 
 .image {
   object-fit: cover;
-  filter: grayscale(100%);
-  opacity: 0.7;
+  filter: none;
+  opacity: 1;
   transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform: scale(1);
 }
 
-.imageHovered {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
+@media (hover: hover) {
+  .image {
+    filter: grayscale(100%);
+    opacity: 0.7;
+  }
+  .imageHovered {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 /* Overlay */
@@ -284,7 +292,7 @@
   }
 
   .lightboxContent {
-    width: 100vw;
+    width: calc(100vw - 32px);
     height: 70vh;
   }
 
