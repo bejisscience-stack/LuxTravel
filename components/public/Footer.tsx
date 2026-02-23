@@ -32,6 +32,7 @@ export default function Footer({ settings }: FooterProps) {
   ]
 
   const phone = settings?.phone || contactInfo.phone
+  const phone2 = contactInfo.phone2
   const email = settings?.email || contactInfo.email
   const address = settings?.address || contactInfo.address
 
@@ -86,6 +87,9 @@ export default function Footer({ settings }: FooterProps) {
             <span className={styles.contactLabel}>{tContact('phone')}</span>
             <a href={`tel:${phone.replace(/\s/g, '')}`} className={styles.contactValue}>
               {phone}
+            </a>
+            <a href={`tel:${phone2.replace(/\s/g, '')}`} className={styles.contactValue}>
+              {phone2}
             </a>
           </div>
           <div className={styles.contactItem}>

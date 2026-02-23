@@ -46,7 +46,8 @@ export const socialLinks = {
 
 // Contact Information
 export const contactInfo = {
-  email: 'info@luxtravel.ge',
-  phone: '+995 XXX XXX XXX',
+  email: 'info.happytrevel2021@gmail.com',
+  phone: '+995 598 700 767',
+  phone2: '+995 551 275 555',
   address: 'Tbilisi, Georgia',
 } as const

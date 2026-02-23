@@ -35,10 +35,10 @@ const settingsConfig = [
     id: 'contact',
     title: 'Contact Information',
     fields: [
-      { key: 'phone', label: 'Phone Number', icon: Phone, placeholder: '+995 XXX XXX XXX' },
-      { key: 'email', label: 'Email Address', icon: Mail, placeholder: 'info@luxtravel.ge' },
+      { key: 'phone', label: 'Phone Number', icon: Phone, placeholder: '+995 598 700 767' },
+      { key: 'email', label: 'Email Address', icon: Mail, placeholder: 'info.happytrevel2021@gmail.com' },
       { key: 'address', label: 'Address', icon: MapPin, placeholder: 'Tbilisi, Georgia' },
-      { key: 'whatsapp', label: 'WhatsApp Number', icon: MessageCircle, placeholder: '+995 XXX XXX XXX' },
+      { key: 'whatsapp', label: 'WhatsApp Number', icon: MessageCircle, placeholder: '+995 598 700 767' },
     ],
   },
   {

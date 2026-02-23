@@ -57,8 +57,8 @@ export default function Error({ error, reset }: ErrorProps) {
         {/* Support Info */}
         <p className={styles.supportText}>
           {t('persistentError')}{' '}
-          <a href="mailto:info@luxtravel.ge" className={styles.supportLink}>
-            info@luxtravel.ge
+          <a href="mailto:info.happytrevel2021@gmail.com" className={styles.supportLink}>
+            info.happytrevel2021@gmail.com
           </a>
         </p>
       </div>
