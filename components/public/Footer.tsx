@@ -31,9 +31,9 @@ export default function Footer({ settings }: FooterProps) {
     { label: t('buses'), href: `/${locale}/buses` },
   ]
 
-  const phone = settings?.phone || contactInfo.phone
+  const phone = contactInfo.phone
   const phone2 = contactInfo.phone2
-  const email = settings?.email || contactInfo.email
+  const email = contactInfo.email
   const address = settings?.address || contactInfo.address
 
   const socialLinkItems = [

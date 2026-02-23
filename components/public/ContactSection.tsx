@@ -75,11 +75,11 @@ export default function ContactSection({ settings }: ContactSectionProps) {
     }
   }
 
-  const phone = settings?.phone || contactInfo.phone
+  const phone = contactInfo.phone
   const phone2 = contactInfo.phone2
-  const email = settings?.email || contactInfo.email
+  const email = contactInfo.email
   const address = settings?.address || contactInfo.address
-  const whatsappNumber = settings?.whatsapp || settings?.phone || contactInfo.phone
+  const whatsappNumber = settings?.whatsapp || contactInfo.phone
 
   const contactItems = [
     {
