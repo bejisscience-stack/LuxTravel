@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Admin Login | LuxTravel',
   description: 'Sign in to the LuxTravel admin panel',
