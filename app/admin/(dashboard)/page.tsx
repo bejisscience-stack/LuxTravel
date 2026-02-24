@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import styles from './page.module.css'
-import { Bus, Image, MessageSquare, Eye, Wrench, CheckCircle, Plus, ArrowRight, Mail, Clock } from 'lucide-react'
+import { Bus, Image, MessageSquare, Eye, Wrench, CheckCircle, Plus, ArrowRight, Mail, Clock, Cog } from 'lucide-react'
 import type { ContactMessage } from '@/types/database'
 
 async function getDashboardStats() {
@@ -14,6 +14,8 @@ async function getDashboardStats() {
     galleryResult,
     messagesResult,
     unreadResult,
+    servicesResult,
+    activeServicesResult,
   ] = await Promise.all([
     supabase.from('buses').select('id', { count: 'exact' }),
     supabase.from('buses').select('id', { count: 'exact' }).eq('is_active', true).eq('maintenance_status', 'operational'),
@@ -21,6 +23,8 @@ async function getDashboardStats() {
     supabase.from('gallery').select('id', { count: 'exact' }),
     supabase.from('contact_messages').select('id', { count: 'exact' }),
     supabase.from('contact_messages').select('id', { count: 'exact' }).eq('is_read', false),
+    supabase.from('services').select('id', { count: 'exact' }),
+    supabase.from('services').select('id', { count: 'exact' }).eq('is_active', true),
   ])
 
   return {
@@ -30,6 +34,8 @@ async function getDashboardStats() {
     totalGalleryImages: galleryResult.count || 0,
     totalMessages: messagesResult.count || 0,
     unreadMessages: unreadResult.count || 0,
+    totalServices: servicesResult.count || 0,
+    activeServices: activeServicesResult.count || 0,
   }
 }
 
@@ -86,6 +92,12 @@ export default async function AdminDashboardPage() {
       color: '#ea580c',
     },
     {
+      label: 'Total Services',
+      value: stats.totalServices,
+      icon: Cog,
+      color: '#0891b2',
+    },
+    {
       label: 'Gallery Images',
       value: stats.totalGalleryImages,
       icon: Image,
@@ -108,6 +120,7 @@ export default async function AdminDashboardPage() {
   const quickActions = [
     { label: 'Add New Bus', href: '/admin/buses/new', icon: Plus, color: '#B8182F' },
     { label: 'Manage Fleet', href: '/admin/buses', icon: Bus, color: '#2563eb' },
+    { label: 'Add New Service', href: '/admin/services/new', icon: Plus, color: '#0891b2' },
     { label: 'View Messages', href: '/admin/messages', icon: Mail, color: '#16a34a' },
     { label: 'Edit Gallery', href: '/admin/gallery', icon: Image, color: '#8b5cf6' },
   ]

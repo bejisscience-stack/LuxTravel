@@ -2,6 +2,7 @@
   "nav": {
     "home": "მთავარი",
     "buses": "ავტობუსები",
+    "services": "სერვისები",
     "language": "ენა"
   },
   "hero": {
@@ -58,6 +59,14 @@
     "amenityPanoramicWindows": "პანორამული ფანჯრები",
     "amenityReadingLights": "საკითხავი განათება"
   },
+  "services": {
+    "tag": "ჩვენი ექსპერტიზა",
+    "title": "მექანიკური სერვისები",
+    "metaTitle": "მექანიკური სერვისები",
+    "pageTitle": "ჩვენი სერვისები",
+    "viewAll": "ყველა სერვისის ნახვა",
+    "noResults": "ამ დროისთვის სერვისები არ არის ხელმისაწვდომი."
+  },
   "gallery": {
     "tag": "ჩვენი მომენტები",
     "title": "გალერეა"
@@ -84,6 +93,7 @@
   "footer": {
     "home": "მთავარი",
     "buses": "ავტობუსები",
+    "services": "სერვისები",
     "facebook": "Facebook",
     "instagram": "Instagram",
     "tiktok": "TikTok",
