@@ -19,7 +19,7 @@ CREATE INDEX idx_services_is_active ON services(is_active);
 CREATE TRIGGER update_services_updated_at
     BEFORE UPDATE ON services
     FOR EACH ROW
-    EXECUTE FUNCTION update_updated_at_column();
+    EXECUTE FUNCTION handle_updated_at();
 
 -- =============================================
 -- ROW LEVEL SECURITY
