@@ -15,6 +15,7 @@ export default function Header() {
   const navItems = [
     { label: t('home'), href: `/${locale}` },
     { label: t('buses'), href: `/${locale}/buses` },
+    { label: t('services'), href: `/${locale}/services` },
   ]
 
   useEffect(() => {

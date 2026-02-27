@@ -1,0 +1,130 @@
+.card {
+  background: #050505;
+  padding: 60px 40px;
+  position: relative;
+  transition: background 0.4s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+}
+
+.card.hovered {
+  background: #0f0f0f;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+}
+
+.name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: var(--font-montserrat);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+  color: #F0F2F5;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+}
+
+.image {
+  object-fit: cover;
+  opacity: 1;
+  filter: none;
+  transition: all 0.5s ease;
+  transform: scale(0.9);
+}
+
+@media (hover: hover) {
+  .image {
+    opacity: 0.7;
+    filter: grayscale(50%);
+    transform: scale(0.85);
+  }
+  .imageHovered {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(0.9);
+  }
+}
+
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+.description {
+  font-family: var(--font-montserrat);
+  font-size: 0.7rem;
+  color: #A0A0A0;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .card {
+    height: 450px;
+    padding: 40px 30px;
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 400px;
+    padding: 30px 24px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 380px;
+    padding: 24px 20px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    height: 340px;
+    padding: 20px 16px;
+  }
+
+  .name {
+    font-size: 0.9rem;
+  }
+}

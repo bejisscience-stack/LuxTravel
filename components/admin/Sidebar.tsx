@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client'
 import {
   LayoutDashboard,
   Bus,
+  Wrench,
   FileText,
   Image,
   MessageSquare,
@@ -20,6 +21,7 @@ import styles from './Sidebar.module.css'
 const navItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Buses', href: '/admin/buses', icon: Bus },
+  { label: 'Services', href: '/admin/services', icon: Wrench },
   { label: 'Content', href: '/admin/content', icon: FileText },
   { label: 'Gallery', href: '/admin/gallery', icon: Image },
   { label: 'Messages', href: '/admin/messages', icon: MessageSquare },

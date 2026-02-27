@@ -75,35 +75,35 @@ export default function ContactSection({ settings }: ContactSectionProps) {
     }
   }
 
-  const phone = settings?.phone || contactInfo.phone
-  const email = settings?.email || contactInfo.email
+  const phone = contactInfo.phone
+  const phone2 = contactInfo.phone2
+  const email = contactInfo.email
   const address = settings?.address || contactInfo.address
-  const whatsappNumber = settings?.whatsapp || settings?.phone || contactInfo.phone
+  const whatsappNumber = settings?.whatsapp || contactInfo.phone
 
   const contactItems = [
     {
       icon: <Phone size={20} />,
       label: t('phone'),
-      value: phone,
-      href: `tel:${phone.replace(/\s/g, '')}`,
+      values: [
+        { text: phone, href: `tel:${phone.replace(/\s/g, '')}` },
+        { text: phone2, href: `tel:${phone2.replace(/\s/g, '')}` },
+      ],
     },
     {
       icon: <Mail size={20} />,
       label: t('email'),
-      value: email,
-      href: `mailto:${email}`,
+      values: [{ text: email, href: `mailto:${email}` }],
     },
     {
       icon: <MapPin size={20} />,
       label: t('address'),
-      value: address,
-      href: null,
+      values: [{ text: address, href: null as string | null }],
     },
     {
       icon: <MessageCircle size={20} />,
       label: 'WhatsApp',
-      value: whatsappNumber,
-      href: `https://wa.me/${whatsappNumber.replace(/[^\d+]/g, '')}`,
+      values: [{ text: whatsappNumber, href: `https://wa.me/${whatsappNumber.replace(/[^\d+]/g, '')}` }],
     },
   ]
 
@@ -131,13 +131,15 @@ export default function ContactSection({ settings }: ContactSectionProps) {
                   <div className={styles.contactIcon}>{item.icon}</div>
                   <div className={styles.contactDetails}>
                     <span className={styles.contactLabel}>{item.label}</span>
-                    {item.href ? (
-                      <a href={item.href} className={styles.contactValue} target={item.href.startsWith('https') ? '_blank' : undefined} rel={item.href.startsWith('https') ? 'noopener noreferrer' : undefined}>
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className={styles.contactValue}>{item.value}</span>
-                    )}
+                    {item.values.map((v, i) => (
+                      v.href ? (
+                        <a key={i} href={v.href} className={styles.contactValue} target={v.href.startsWith('https') ? '_blank' : undefined} rel={v.href.startsWith('https') ? 'noopener noreferrer' : undefined}>
+                          {v.text}
+                        </a>
+                      ) : (
+                        <span key={i} className={styles.contactValue}>{v.text}</span>
+                      )
+                    ))}
                   </div>
                 </div>
               ))}

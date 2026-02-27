@@ -2,6 +2,7 @@
   "nav": {
     "home": "Главная",
     "buses": "Автобусы",
+    "services": "Услуги",
     "language": "Язык"
   },
   "hero": {
@@ -58,6 +59,14 @@
     "amenityPanoramicWindows": "Панорамные окна",
     "amenityReadingLights": "Лампы для чтения"
   },
+  "services": {
+    "tag": "НАША ЭКСПЕРТИЗА",
+    "title": "Механические услуги",
+    "metaTitle": "Механические услуги",
+    "pageTitle": "Наши услуги",
+    "viewAll": "Все услуги",
+    "noResults": "На данный момент услуги недоступны."
+  },
   "gallery": {
     "tag": "НАШИ МОМЕНТЫ",
     "title": "Галерея"
@@ -84,6 +93,7 @@
   "footer": {
     "home": "Главная",
     "buses": "Автобусы",
+    "services": "Услуги",
     "facebook": "Facebook",
     "instagram": "Instagram",
     "tiktok": "TikTok",

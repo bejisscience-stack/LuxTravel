@@ -31,6 +31,18 @@ export interface Bus {
   updated_at: string;
 }
 
+export interface Service {
+  id: string;
+  name: string;
+  description_en: string | null;
+  description_ka: string | null;
+  description_ru: string | null;
+  photos: string[];
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface SiteContent {
   id: string;
   key: string;
@@ -84,6 +96,16 @@ export interface Database {
         Update: Partial<Omit<Bus, 'id' | 'created_at' | 'updated_at'>>;
         Relationships: [];
       };
+      services: {
+        Row: Service;
+        Insert: Omit<Service, 'id' | 'created_at' | 'updated_at'> & {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Omit<Service, 'id' | 'created_at' | 'updated_at'>>;
+        Relationships: [];
+      };
       site_content: {
         Row: SiteContent;
         Insert: Omit<SiteContent, 'id' | 'created_at' | 'updated_at'> & {
@@ -127,6 +149,10 @@ export interface Database {
     Views: {
       active_buses_view: {
         Row: Omit<Bus, 'is_active'>;
+        Relationships: [];
+      };
+      active_services_view: {
+        Row: Omit<Service, 'is_active'>;
         Relationships: [];
       };
       unread_messages_view: {

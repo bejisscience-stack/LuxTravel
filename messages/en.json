@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "buses": "Buses",
+    "services": "Services",
     "language": "Language"
   },
   "hero": {
@@ -58,6 +59,14 @@
     "amenityPanoramicWindows": "Panoramic Windows",
     "amenityReadingLights": "Reading Lights"
   },
+  "services": {
+    "tag": "OUR EXPERTISE",
+    "title": "Mechanic Services",
+    "metaTitle": "Mechanic Services",
+    "pageTitle": "Our Services",
+    "viewAll": "View All Services",
+    "noResults": "No services available at the moment."
+  },
   "gallery": {
     "tag": "OUR MOMENTS",
     "title": "Gallery"
@@ -84,6 +93,7 @@
   "footer": {
     "home": "Home",
     "buses": "Buses",
+    "services": "Services",
     "facebook": "Facebook",
     "instagram": "Instagram",
     "tiktok": "TikTok",

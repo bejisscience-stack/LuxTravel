@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
-import { Hero, WhyChooseUs, FleetSection, Gallery, ContactSection, Footer } from '@/components/public'
-import type { Bus, GalleryImage, SiteContent, Setting } from '@/types/database'
+import { Hero, WhyChooseUs, FleetSection, ServicesSection, Gallery, ContactSection, Footer } from '@/components/public'
+import type { Bus, Service, GalleryImage, SiteContent, Setting } from '@/types/database'
 
 type Props = {
   params: { locale: string }
@@ -26,6 +26,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 async function getHomePageData() {
   const empty = {
     buses: [] as Bus[],
+    services: [] as Service[],
     gallery: [] as GalleryImage[],
     siteContent: [] as SiteContent[],
     settings: [] as Setting[],
@@ -35,13 +36,19 @@ async function getHomePageData() {
   }
   try {
     const supabase = await createClient()
-    const [busesResult, galleryResult, siteContentResult, settingsResult] = await Promise.all([
+    const [busesResult, servicesResult, galleryResult, siteContentResult, settingsResult] = await Promise.all([
       supabase
         .from('buses')
         .select('*')
         .eq('is_active', true)
         .order('class')
         .limit(6),
+      supabase
+        .from('services')
+        .select('*')
+        .eq('is_active', true)
+        .order('name')
+        .limit(3),
       supabase
         .from('gallery')
         .select('*')
@@ -55,6 +62,7 @@ async function getHomePageData() {
     ])
     return {
       buses: (busesResult.data as Bus[]) || [],
+      services: (servicesResult.data as Service[]) || [],
       gallery: (galleryResult.data as GalleryImage[]) || [],
       siteContent: (siteContentResult.data as SiteContent[]) || [],
       settings: (settingsResult.data as Setting[]) || [],
@@ -65,7 +73,7 @@ async function getHomePageData() {
 }
 
 export default async function HomePage({ params: { locale } }: Props) {
-  const { buses, gallery, siteContent, settings } = await getHomePageData()
+  const { buses, services, gallery, siteContent, settings } = await getHomePageData()
 
   // Transform buses for FleetSection component
   const fleetBuses = buses.map((bus) => ({
@@ -125,6 +133,13 @@ export default async function HomePage({ params: { locale } }: Props) {
         description={getLocalizedValue(whySubtitle, locale)}
       />
       <FleetSection buses={fleetBuses} />
+      <ServicesSection
+        services={services.map((s) => ({
+          name: s.name,
+          description: (s[`description_${locale}` as keyof Service] as string) || s.description_en || '',
+          imageUrl: s.photos?.[0] || '',
+        }))}
+      />
       <Gallery images={gallery} />
       <ContactSection settings={settingsData} />
       <Footer settings={settingsData} />

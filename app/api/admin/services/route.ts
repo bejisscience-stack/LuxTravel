@@ -26,7 +26,7 @@ async function isAuthenticated(): Promise<boolean> {
   return !!user
 }
 
-// DELETE /api/admin/buses?id=xxx
+// DELETE /api/admin/services?id=xxx
 export async function DELETE(request: NextRequest) {
   const authenticated = await isAuthenticated()
   if (!authenticated) {
@@ -34,55 +34,55 @@ export async function DELETE(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url)
-  const busId = searchParams.get('id')
+  const serviceId = searchParams.get('id')
 
-  if (!busId) {
-    return NextResponse.json({ error: 'Bus ID is required' }, { status: 400 })
+  if (!serviceId) {
+    return NextResponse.json({ error: 'Service ID is required' }, { status: 400 })
   }
 
   try {
     const supabase = createServiceClient()
 
-    // First get the bus to find its photos
-    const busResult = await supabase
-      .from('buses')
+    // First get the service to find its photos
+    const serviceResult = await supabase
+      .from('services')
       .select('photos')
-      .eq('id', busId)
+      .eq('id', serviceId)
       .single()
-    const bus = busResult.data as { photos: string[] } | null
-    const fetchError = busResult.error
+    const service = serviceResult.data as { photos: string[] } | null
+    const fetchError = serviceResult.error
 
-    if (fetchError || !bus) {
-      return NextResponse.json({ error: 'Bus not found' }, { status: 404 })
+    if (fetchError || !service) {
+      return NextResponse.json({ error: 'Service not found' }, { status: 404 })
     }
 
     // Delete photos from storage
-    if (bus.photos && bus.photos.length > 0) {
-      const filePaths = bus.photos
+    if (service.photos && service.photos.length > 0) {
+      const filePaths = service.photos
         .map((url: string) => {
-          const parts = url.split('/storage/v1/object/public/bus-images/')
+          const parts = url.split('/storage/v1/object/public/service-images/')
           return parts.length > 1 ? parts[1] : null
         })
         .filter((p: string | null): p is string => p !== null)
 
       if (filePaths.length > 0) {
-        await supabase.storage.from('bus-images').remove(filePaths)
+        await supabase.storage.from('service-images').remove(filePaths)
       }
     }
 
-    // Delete the bus record
+    // Delete the service record
     const { error: deleteError } = await supabase
-      .from('buses')
+      .from('services')
       .delete()
-      .eq('id', busId)
+      .eq('id', serviceId)
 
     if (deleteError) {
-      return NextResponse.json({ error: 'Failed to delete bus' }, { status: 500 })
+      return NextResponse.json({ error: 'Failed to delete service' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error deleting bus:', error)
+    console.error('Error deleting service:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
